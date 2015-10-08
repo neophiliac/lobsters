@@ -1,6 +1,7 @@
 language: ruby
-before_script:
+before_install:
   - sh -c "cp config/database.travis.yml config/database.yml"
+before_script:
   - sh -c "bundle exec rake db:schema:load"
   - sh -c "bundle exec rake db:seed"
 script: "bundle exec rspec"
