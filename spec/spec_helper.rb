@@ -29,4 +29,8 @@ RSpec.configure do |config|
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
+
+  # suggestions from failing tests
+  config.expose_current_running_example_as :example
+  config.infer_spec_type_from_file_location!
 end
