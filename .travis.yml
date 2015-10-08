@@ -1,6 +1,6 @@
 language: ruby
 before_script:
-  - sh -c "cp config/database.sample.yml config/database.yml"
+  - sh -c "cp config/database.travis.yml config/database.yml"
   - sh -c "bundle exec rake db:schema:load"
   - sh -c "bundle exec rake db:seed"
 script: "bundle exec rspec"
