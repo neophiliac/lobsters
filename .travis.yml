@@ -1,8 +1,8 @@
 language: ruby
 before_script:
-  - cp config/database.sample.yml config/database.yml
-  - bundle exec rake db:schema:load
-  - bundle exec rake db:seed
+  - sh -c "cp config/database.sample.yml config/database.yml"
+  - sh -c "bundle exec rake db:schema:load"
+  - sh -c "bundle exec rake db:seed"
 script: "bundle exec rspec"
 rvm:
     - 1.9.3
