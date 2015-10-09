@@ -5,9 +5,10 @@ rvm:
 before_install:
   - "cp config/database.travis.yml config/database.yml"
 before_script:
+  - "mysql -e 'create database thinking_sphinx;' > /dev/null"
   - sh -c "bundle exec rake tmp:create"
   - sh -c "bundle exec rake db:schema:load"
   - sh -c "bundle exec rake ts:rebuild"
 script: "bundle exec rspec"
 env:
-  - SPHINX_BIN=/usr/local/sphinx-2.2.6/bin/ SPHINX_VERSION=2.2.6
+  - DATABASE=mysql2 SPHINX_BIN=/usr/local/sphinx-2.2.6/bin/ SPHINX_VERSION=2.2.6
