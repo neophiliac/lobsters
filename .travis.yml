@@ -1,11 +1,13 @@
 language: ruby
+rvm:
+    - 1.9.3
+    - 2.2.3
 before_install:
   - "cp config/database.travis.yml config/database.yml"
 before_script:
   - sh -c "bundle exec rake tmp:create"
   - sh -c "bundle exec rake db:schema:load"
-  - sh -c "bundle exec rake db:seed"
+  - sh -c "bundle exec rake ts:rebuild"
 script: "bundle exec rspec"
-rvm:
-    - 1.9.3
-    - 2.2.3
+env:
+  - SPHINX_BIN=/usr/local/sphinx-2.2.6/bin/ SPHINX_VERSION=2.2.6
